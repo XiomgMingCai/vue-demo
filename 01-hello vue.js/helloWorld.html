@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    {{ message }}
+</div>
+
+<script>
+
+    shuju = {message: 'Hello Vue.js!'}
+    var vm = new Vue({
+
+        el: '#app',
+        data: shuju
+    });
+
+    vm.$watch('a',function (newVal, oldVal) {
+/*Vue.js 提供了一个方法 $watch，它用于观察 Vue 实例上的数据变动。当一些数据需要根据其它数据变化时，可使用$watch*/
+    })
+</script>
+
+
+</body>
+</html>
