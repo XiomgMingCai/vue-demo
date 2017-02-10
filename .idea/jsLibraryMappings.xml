@@ -3,5 +3,6 @@
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/01-hello vue.js/helloWorld.html" libraries="{vue-DefinitelyTyped}" />
     <file url="file://$PROJECT_DIR$/02-插值/v-html--v-once.html" libraries="{vue-DefinitelyTyped}" />
+    <file url="file://$PROJECT_DIR$/04-指令/v-for.html" libraries="{vue-DefinitelyTyped}" />
   </component>
 </project>

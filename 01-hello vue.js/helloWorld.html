@@ -8,10 +8,16 @@
 
 <body>
 <div id="app">
+    <button onclick="e()">按钮 </button>
+    <br>
     {{ message }}
 </div>
 
 <script>
+    function e() {
+        vm.message = '呵呵'
+        console.log(vm.$data.message);
+    }
 
     shuju = {message: 'Hello Vue.js!'}
     var vm = new Vue({

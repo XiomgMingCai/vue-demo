@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <button v-on:click="jia">+</button>
+    <p>数量：{{ shuliang }}</p>
+    <p>单价：{{ danjia }}</p>
+    <hr>
+    <p>总价：{{ zongjia }}</p>
+    <button @click="jian">-</button>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            shuliang: 0,
+            danjia: 10,
+            zongjia: 0
+        },
+        methods: {
+            jia: function () {
+                this.shuliang++;
+                this.zongjia = this.shuliang * this.danjia
+            },
+            jian: function () {
+                this.shuliang--;
+                if (this.shuliang < 0) {
+                    this.shuliang = 0;
+                }
+                this.zongjia = this.shuliang * this.danjia
+            }
+        },
+        watch: {
+            'shuliang': function (newval, oldval) {
+                if (this.shuliang > 3) {
+                    this.zongjia = this.zongjia - this.danjia
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
