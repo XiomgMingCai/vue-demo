@@ -13,38 +13,57 @@
     <img :src="src" alt="">
     <p :class="{red:isRed}">绑定class </p>
     <span :class="[classA,classB]">关联两个样式表就用数组</span>
+    <br>
+    <hr>
+    <div v-bind:class="{ 'active': isA, 'text-danger': isB }">条件判断绑定多个class</div>
+    <hr>
+    <div v-bind:class="['red',{ 'active': isA}]">混合绑定多个class</div>
+    <hr>
+    <p></p>
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">v-bind:style 的对象语法十分直观——看着非常像 CSS ，其实它是一个
+        JavaScript 对象。 CSS 属性名可以用驼峰式（camelCase）或短横分隔命名（kebab-case）：
+    </div>
+    <div v-bind:style="{styleObjA,styleObjB}">直接绑定到一个样式对象通常更好，让模板更清晰：</div:>
+    </div>
+    <script>
+        var shuju = {
+            src: 'https://guso.gq/logo.png',
+            isRed: true,
+            isA: true,
+            isB: true,
+            classA: 'active',
+            classB: 'text-danger',
+            activeColor: 'red',
+            fontSize: 30,
+            //可以是对象
+            styleObjA: {
+                color: 'red'
+            },
+            styleObjB: {
+                fontSize: '13px'
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: shuju,
+            methods: {}
+        });
+    </script>
+    <style>
+        .red {
+            color: red;
+        }
 
-</div>
-<script>
-    var shuju = {
-        src: 'https://guso.gq/logo.png',
-        isRed: true,
-        isA: true,
-        isB: true,
-        classA: 'class-A',
-        classB: 'class-B'
-    }
-    var vm = new Vue({
-        el: '#app',
-        data: shuju,
-        methods: {}
-    });
-</script>
-<style>
-    .red {
-        color: red;
-    }
+        .active {
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            background-color: #2a6496;
+        }
 
-    .class-A {
-        display: inline-block;
-        height: 200px;
-        width: 200px;
-        background-color: #2a6496;
-    }
-
-    .class-B {
-        border: 10px solid red;
-    }
-</style>
+        .text-danger {
+            border: 10px solid red;
+        }
+    </style>
 </body>
 </html>
