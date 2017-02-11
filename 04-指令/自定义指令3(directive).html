@@ -1,0 +1,34 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<div id="app">
+    <comp></comp>
+</div>
+<script>
+    Vue.directive('hidden', {
+        update:function(el,binding){
+            el.style.display = binding.value?'none':'inline'
+        }
+    })
+
+    Vue.component('comp', {
+        template:'<div><button @click="hate=!hate">toggle</button><div v-hidd="hate">{{msg}}</div></div>',
+        directives:{
+            hidd:{
+                update:function(el,binding){
+                    console.log(binding.value)
+                    el.style.display = binding.value?'none':'block'
+                }
+            }
+        },
+        data(){
+            return{hate:false,msg:1}
+        }
+    })
+
+    new Vue(
+            {
+                el:'#app',
+                data(){
+                    return{f:false}
+                }
+            })
+</script>

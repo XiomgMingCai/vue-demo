@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <span>文本框: {{ message-1 }}</span>
+    <br/>
+    <input type="text" v-model="message1" placeholder="edit me">
+
+    <hr>
+    <br/>
+    <span>文本区域:</span>
+    <p>{{ message-2 }}</p>
+    <br>
+    <textarea v-model="message2" placeholder="add multiple lines"></textarea>
+
+
+    <hr>
+    <br/>多选框：
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <hr>
+    <br/>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames | json }}</span>
+
+
+    <hr>
+    <br/>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+
+    <hr>
+    <br/>select单选
+    <select v-model="selectedone">
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selectedone }}</span>
+
+    <hr>
+    <br/>
+    <select v-model="selected" multiple>
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected | json }}</span>
+
+    <hr>
+    <br/>
+    <select v-model="selectedName">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selectedName }}</span>
+
+
+
+
+</div>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            message1: 'Hello Vue.js!',
+            message2: 'Hello Vue.js!',
+            checked:0,
+            checkedNames: [],
+            selected:[],
+            selectedName: 'A',
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
+        }
+    });
+
+</script>
+</body>
+</html>
+
+
+
