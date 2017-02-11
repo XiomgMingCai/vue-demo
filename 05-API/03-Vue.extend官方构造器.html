@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="example">
+    写什么都会被template替换
+</div>
+<script>
+
+    new Vue({
+        el: '#example',
+        data: {
+            message: 'hello vue.js'
+        },
+        /* template:'<p>我是小强模板</p>'*/
+        template: '<p>{{message}}</p>'
+
+    })
+</script>
+</body>
+</html>

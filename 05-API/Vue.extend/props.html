@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+<script type="x-template" id="m1">
+    <p @click="hi">{{message}} + {{a}}</p>
+    <my-buycarbtn v-bind:my-message.sync="a"></my-buycarbtn>
+</script>
+
+<script type="x-template" id="m2">
+    <p>{{myMessage}}</p>
+    <button @click="add">{{btnVal}}</button>
+</script>
+
+<div id="app">
+    <my-buycar></my-buycar>
+</div>
+
+<script>
+    var BuyCarBtn = Vue.extend({
+        //props:["myMessage"],
+        props:{
+            myMessage:Number
+        },
+        data:function(){
+            return ({btnVal:this.$parent.btnVal})
+        },
+        template : '#m2',
+        methods:{
+            add:function(){
+                this.myMessage ++
+            }
+        }
+    });
+
+
+    Vue.component('my-buycar',{
+        data:function(){
+            return ({
+                message:'苹果:',
+                btnVal:'提交',
+                a:1
+            })
+        },
+        template : '#m1',
+        components:{
+            'my-buycarbtn':BuyCarBtn
+        },
+        methods:{
+            hi:function(){
+                console.log(this.$root)
+            }
+        }
+    });
+
+
+
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

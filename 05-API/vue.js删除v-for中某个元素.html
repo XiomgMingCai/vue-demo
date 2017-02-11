@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="todo in todos">
+            <span>{{ todo.text }}</span>
+            <button @click="removeTodo">X</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var shuju = {
+        todos: [
+            {text: 'Add some todos'},
+            {text: 'Learn JavaScript'},
+            {text: 'Learn Vue.js'},
+            {text: 'Build Something Awesome'}
+        ]
+    }
+    new Vue({
+        el: '#app',
+        data: shuju,
+        methods: {
+            removeTodo: function (index) {
+                console.log(index);
+                this.todos.splice(index, 1);
+            }
+        }
+    })
+</script>
+</body>
+</html>

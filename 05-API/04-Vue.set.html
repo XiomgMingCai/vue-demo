@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+<!--<div id="app">
+    <ul>
+        <li v-for="item of arr">{{ item }}</li>
+    </ul>
+</div>
+<script>
+    var asdf = {arr: ['aaa', 'bbb', 'ccc']};
+    var vm = new Vue({
+        el: '#app',
+        data: asdf,
+    });
+    //修改不了值
+    vm.arr[1] = '233'
+    vm.$data.arr[1] = '233'
+
+    Vue.set(vm.arr, 1, '233');//233
+    vm.$set(vm.arr, 0, 'AAA'); //AAA
+    vm.arr.splice(2,2,'DDD')
+</script>-->
+<div id="app">
+    <ul>
+        <li v-for="item of arr">{{ item }}</li>
+    </ul>
+    <ul>
+        <li v-for="item of arr2">{{ item }}</li>
+    </ul>
+
+
+    <hr>
+    <h5>Vue删除和 原生 删除</h5>
+    <button @click="delMessage">Vue 删除</button>
+    <button onclick="delMessage()">原生 删除</button>
+    <span>{{message}}</span>
+</div>
+<script>
+
+
+    var shuju = {
+        arr: ['aaa', 'bbb', 'ccc'],
+        arr2: ['111', '222', '333'],
+        message: 'hello world!'
+    };
+    var vm = new Vue({
+        el: '#app',
+        data: shuju,
+        methods: {
+            delMessage: function () {
+                this.message = null
+                console.log(this.message);
+            }
+        }
+    });
+
+    vm.arr[1] = 666;
+    //实例方法
+//也就是说，$set()方法调用时，页面会全部更新一遍。
+    vm.$set(vm.arr2, 1, 233)
+    function delMessage() {
+//        Vue.delete(this.message, 'age');
+    }
+</script>
+</body>
+</html>
